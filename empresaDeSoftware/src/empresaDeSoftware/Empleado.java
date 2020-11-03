@@ -4,6 +4,7 @@ public class Empleado {
 	private Integer dni;
 	private Integer idEmpleado;
 	private String nombre;
+
 	
 	public Empleado(Integer dni, Integer idEmpleado, String nombre) {
 		this.dni = dni;
@@ -11,7 +12,10 @@ public class Empleado {
 		this.nombre = nombre;
 	}
 	
-
+	public void asignarDepartamento() {
+		
+	}
+	
 	public Integer getDni() {
 		return dni;
 	}

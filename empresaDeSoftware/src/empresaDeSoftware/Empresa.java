@@ -3,10 +3,10 @@ package empresaDeSoftware;
 import java.util.ArrayList;
 
 public class Empresa {
-	ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-	ArrayList<Empleado> departamentos = new ArrayList<Empleado>();
+	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
+	private ArrayList<Empleado> departamentos = new ArrayList<Empleado>();
 
-	public Boolean agregarEmpleado(Empleado empleado) {
+	public Boolean contratarEmpleado(Empleado empleado) {
 		empleados.add(empleado);
 		return true;
 	}
@@ -19,6 +19,14 @@ public class Empresa {
 			}
 		}
 		return false;
+	}
+
+	public ArrayList<Empleado> getEmpleados() {
+		return empleados;
+	}
+
+	public ArrayList<Empleado> getDepartamentos() {
+		return departamentos;
 	}
 
 	@Override
