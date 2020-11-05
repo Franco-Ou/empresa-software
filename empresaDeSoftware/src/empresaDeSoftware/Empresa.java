@@ -28,6 +28,8 @@ public class Empresa {
 	public ArrayList<Empleado> getDepartamentos() {
 		return departamentos;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {
