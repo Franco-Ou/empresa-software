@@ -7,5 +7,18 @@ public class Gerente extends Empleado{
 	
 	public Gerente(Integer dni, Integer idEmpleado, String nombre,Double sueldo, Integer anioDeIngreso) {
 		super(dni,idEmpleado,nombre,sueldo,anioDeIngreso);
+		toleranciaDeAusencias=5;
 	}
+
+	public ArrayList<Empleado> getEmpleadosACargo() {
+		return empleadosACargo;
+	}
+
+	public void agregarEmpleadoACargo(Empleado empleado) {
+		empleadosACargo.add(empleado);
+	}
+	
+	
+	
+	
 }

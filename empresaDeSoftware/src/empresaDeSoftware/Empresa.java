@@ -1,19 +1,26 @@
 package empresaDeSoftware;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Empresa {
+	private String nombre;
 	private ArrayList<Empleado> empleados = new ArrayList<Empleado>();
-	private ArrayList<Empleado> departamentos = new ArrayList<Empleado>();
+	private ArrayList<Departamento> departamentos = new ArrayList<Departamento>();
+	HashMap<Empleado, Double> sueldos = new HashMap<Empleado, Double>();
+	
+	public Empresa(String nombre){
+		this.nombre = nombre;
+	}
 
 	public Boolean contratarEmpleado(Empleado empleado) {
 		empleados.add(empleado);
 		return true;
 	}
 
-	public Boolean darDeBajaAEmpleado(Integer id) {
+	public Boolean darDeBajaAEmpleado(Integer dni) {
 		for (int i = 0; i < empleados.size(); i++) {
-			if (empleados.get(i).getIdEmpleado().equals(id)) {
+			if (empleados.get(i).getDni()==dni) {
 				empleados.remove(i);
 				return true;
 			}
@@ -25,8 +32,15 @@ public class Empresa {
 		return empleados;
 	}
 
-	public ArrayList<Empleado> getDepartamentos() {
+	public ArrayList<Departamento> getDepartamentos() {
 		return departamentos;
+	}
+	
+	public HashMap<Empleado, Double> liquidarSueldos(){
+		for (Empleado empleado : empleados) {
+			sueldos.put(empleado, empleado.calcularSueldo());
+		}
+		return sueldos;
 	}
 	
 	
