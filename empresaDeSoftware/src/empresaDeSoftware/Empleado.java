@@ -11,6 +11,9 @@ public class Empleado {
 	private Double sueldo;
 	private Integer anioDeIngreso;
 	private Integer diasDeVacaciones;
+	private Integer ausencias=0;
+	private Integer llegadasTarde=0;
+	protected Integer toleranciaDeAusencias=2;
 
 	
 	public Empleado(Integer dni, Integer idEmpleado, String nombre, Double sueldo, Integer anioDeIngreso) {
@@ -35,6 +38,14 @@ public class Empleado {
 		return nombre;
 	}
 	
+	public void reportarLlegadaTarde(){
+		llegadasTarde++;
+	}
+	
+	public void reportarAusencia() {
+		ausencias++;
+	}
+	
 	private void calcularDiasDeVacaciones() {
 		Integer antiguedad;
 		Integer anioActual = Calendar.getInstance().get(Calendar.YEAR);
@@ -56,6 +67,21 @@ public class Empleado {
 	
 	public String toString(){
 		return (dni.toString()+" "+idEmpleado.toString()+" "+nombre+" "+sueldo.toString()+" "+anioDeIngreso.toString());
+	}
+	
+	public Double calcularSueldo() {
+		Double liquidacion = sueldo;
+		int cantidadDeAusencias = ausencias;
+		/* 4 llegadas tarde se consideran una ausencia*/
+		int ausenciasPorLlegadasTarde = llegadasTarde/4;
+		cantidadDeAusencias+=ausenciasPorLlegadasTarde;
+		double valorDiaDeTrabajo=sueldo/20;
+		if(cantidadDeAusencias==0) {
+			liquidacion+=2000;
+		}else if(cantidadDeAusencias>toleranciaDeAusencias) {
+			liquidacion-=valorDiaDeTrabajo*cantidadDeAusencias;
+		}
+		return liquidacion;
 	}
 	
 	

@@ -20,6 +20,7 @@ public class testEmpleado {
 		Empleado empleadoDePrueba4 = new Empleado(45990876,004,"Juana Gomez",35000.0,2014);
 		
 		
+		
 		assertEquals(28, empleadoDePrueba1.getDiasDeVacaciones());
 		assertEquals(35, empleadoDePrueba2.getDiasDeVacaciones());
 		assertEquals(14, empleadoDePrueba3.getDiasDeVacaciones());
