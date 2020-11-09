@@ -1,16 +1,17 @@
 package empresaDeSoftware;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Gerente extends Empleado{
-	private ArrayList<Empleado> empleadosACargo = new ArrayList<Empleado>();
+	private HashSet<Empleado> empleadosACargo = new HashSet<Empleado>();
 	
 	public Gerente(Integer dni, Integer idEmpleado, String nombre,Double sueldo, Integer anioDeIngreso) {
 		super(dni,idEmpleado,nombre,sueldo,anioDeIngreso);
 		toleranciaDeAusencias=5;
 	}
 
-	public ArrayList<Empleado> getEmpleadosACargo() {
+	public HashSet<Empleado> getEmpleadosACargo() {
 		return empleadosACargo;
 	}
 

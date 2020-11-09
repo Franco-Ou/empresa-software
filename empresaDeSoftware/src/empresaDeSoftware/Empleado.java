@@ -71,9 +71,9 @@ public class Empleado {
 	
 	public Double calcularSueldo() {
 		Double liquidacion = sueldo;
-		int cantidadDeAusencias = ausencias;
+		Integer cantidadDeAusencias = ausencias;
 		/* 4 llegadas tarde se consideran una ausencia*/
-		int ausenciasPorLlegadasTarde = llegadasTarde/4;
+		Integer ausenciasPorLlegadasTarde = llegadasTarde/4;
 		cantidadDeAusencias+=ausenciasPorLlegadasTarde;
 		double valorDiaDeTrabajo=sueldo/20;
 		if(cantidadDeAusencias==0) {
