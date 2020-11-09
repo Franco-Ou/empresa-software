@@ -14,6 +14,7 @@ public class Empleado {
 	private Integer ausencias=0;
 	private Integer llegadasTarde=0;
 	protected Integer toleranciaDeAusencias=2;
+	protected Integer plus=2000;
 
 	
 	public Empleado(Integer dni, Integer idEmpleado, String nombre, Double sueldo, Integer anioDeIngreso) {
@@ -38,6 +39,12 @@ public class Empleado {
 		return nombre;
 	}
 	
+	
+	public Double getSueldo() {
+		return sueldo;
+	}
+
+	
 	public void reportarLlegadaTarde(){
 		llegadasTarde++;
 	}
@@ -46,7 +53,7 @@ public class Empleado {
 		ausencias++;
 	}
 	
-	private void calcularDiasDeVacaciones() {
+	protected void calcularDiasDeVacaciones() {
 		Integer antiguedad;
 		Integer anioActual = Calendar.getInstance().get(Calendar.YEAR);
 		antiguedad = anioActual	- anioDeIngreso;
@@ -77,11 +84,44 @@ public class Empleado {
 		cantidadDeAusencias+=ausenciasPorLlegadasTarde;
 		double valorDiaDeTrabajo=sueldo/20;
 		if(cantidadDeAusencias==0) {
-			liquidacion+=2000;
+			liquidacion+=plus;
 		}else if(cantidadDeAusencias>toleranciaDeAusencias) {
 			liquidacion-=valorDiaDeTrabajo*cantidadDeAusencias;
 		}
 		return liquidacion;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + ((idEmpleado == null) ? 0 : idEmpleado.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Empleado other = (Empleado) obj;
+		if (dni == null) {
+			if (other.dni != null)
+				return false;
+		} else if (!dni.equals(other.dni))
+			return false;
+		if (idEmpleado == null) {
+			if (other.idEmpleado != null)
+				return false;
+		} else if (!idEmpleado.equals(other.idEmpleado))
+			return false;
+		return true;
 	}
 	
 	
