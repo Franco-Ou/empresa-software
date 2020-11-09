@@ -1,10 +1,11 @@
 package empresaDeSoftware;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Departamento {
 	private String nombre;
-	private ArrayList<Empleado> listaDeEmpleados = new ArrayList<Empleado>();
+	private HashSet<Empleado> listaDeEmpleados = new HashSet<Empleado>();
 	
 	public Departamento(String nombre) {
 		this.nombre = nombre;

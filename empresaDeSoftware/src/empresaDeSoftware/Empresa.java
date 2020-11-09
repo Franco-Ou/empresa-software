@@ -7,16 +7,16 @@ import java.util.HashSet;
 public class Empresa {
 	private String nombre;
 	private HashSet<Empleado> empleados = new HashSet<Empleado>();
-	private ArrayList<Departamento> departamentos = new ArrayList<Departamento>();
+	private HashSet<Departamento> departamentos = new HashSet<Departamento>();
 	HashMap<Empleado, Double> sueldos = new HashMap<Empleado, Double>();
 
 	public Empresa(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public Boolean contratarEmpleado(Empleado empleado) {
+	public void contratarEmpleado(Empleado empleado) {
 		empleados.add(empleado);
-		return true;
+		
 	}
 
 	public Boolean darDeBajaAEmpleado(Integer dni) {
@@ -33,7 +33,8 @@ public class Empresa {
 		return empleados;
 	}
 
-	public ArrayList<Departamento> getDepartamentos() {
+	public HashSet<Departamento> getDepartamentos() {
+	
 		return departamentos;
 	}
 
@@ -42,31 +43,6 @@ public class Empresa {
 			sueldos.put(empleado, empleado.calcularSueldo());
 		}
 		return sueldos;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((empleados == null) ? 0 : empleados.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Empresa other = (Empresa) obj;
-		if (empleados == null) {
-			if (other.empleados != null)
-				return false;
-		} else if (!empleados.equals(other.empleados))
-			return false;
-		return true;
 	}
 
 }
