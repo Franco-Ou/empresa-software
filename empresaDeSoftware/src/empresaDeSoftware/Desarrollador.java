@@ -16,7 +16,6 @@ public class Desarrollador extends Empleado {
 
 	public void asignarProyecto(String proyecto) {
 		proyectosAsignados.add(proyecto);
-		;
 	}
 
 	public ArrayList<String> getProyectosAsignados() {
@@ -38,7 +37,7 @@ public class Desarrollador extends Empleado {
 
 	// Los desarrolladores tienen un bono de $ 2000 por proyecto finalizado:
 	public Double calcularSueldo(Empleado empleado) {
-		Contaduria micontador = new Contaduria("Equipo A");
+		Contaduria micontador = new Contaduria();
 		Double extraPorBono = (Double) (bono * proyectosFinalizados);
 		return micontador.calcularSueldo(empleado) + extraPorBono;
 	}

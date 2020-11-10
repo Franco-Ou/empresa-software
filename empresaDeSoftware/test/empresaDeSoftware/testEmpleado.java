@@ -19,11 +19,11 @@ public class testEmpleado {
 		Empleado empleadoDePrueba3 = new Empleado(44567889, 003, "Amancio Jackson", 35000.0, 2019);
 		Empleado empleadoDePrueba4 = new Empleado(45990876, 004, "Juana Gomez", 35000.0, 2014);
 
-		Administracion administracion = new Administracion("Administración");
-		administracion.calcularDiasDeVacaciones(empleadoDePrueba1);
-		administracion.calcularDiasDeVacaciones(empleadoDePrueba2);
-		administracion.calcularDiasDeVacaciones(empleadoDePrueba3);
-		administracion.calcularDiasDeVacaciones(empleadoDePrueba4);
+		Administracion administracion = new Administracion();
+		empleadoDePrueba1.calcularDiasDeVacaciones();
+		empleadoDePrueba2.calcularDiasDeVacaciones();
+		empleadoDePrueba3.calcularDiasDeVacaciones();
+		empleadoDePrueba4.calcularDiasDeVacaciones();
 
 		assertEquals(28, empleadoDePrueba1.getDiasDeVacaciones());
 		assertEquals(35, empleadoDePrueba2.getDiasDeVacaciones());

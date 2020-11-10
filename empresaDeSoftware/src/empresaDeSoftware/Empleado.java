@@ -25,6 +25,21 @@ public class Empleado {
 
 	}
 
+	protected void calcularDiasDeVacaciones() {
+		Integer antiguedad;
+		Integer anioActual = Calendar.getInstance().get(Calendar.YEAR);
+		antiguedad = anioActual - anioDeIngreso;
+		if (antiguedad <= 5) {
+			diasDeVacaciones = 14;
+		} else if (antiguedad <= 10) {
+			diasDeVacaciones = 21;
+		} else if (antiguedad <= 20) {
+			diasDeVacaciones = 28;
+		} else {
+			diasDeVacaciones = 35;
+		}
+	}
+
 	public Integer getPlus() {
 		return plus;
 	}
@@ -44,7 +59,6 @@ public class Empleado {
 	public Integer getLlegadasTarde() {
 		return llegadasTarde;
 	}
-	
 
 	public void setAusencias(Integer ausencias) {
 		this.ausencias = ausencias;

@@ -1,8 +1,11 @@
 package empresaDeSoftware;
 
-public class Contaduria {
+import java.util.HashSet;
 
-	public Contaduria(String nombre) {
+public class Contaduria {
+	private Double liquidacionTotalDeSueldosDeLaEmpresa = 0.0;
+
+	public Contaduria() {
 
 	}
 
@@ -18,29 +21,21 @@ public class Contaduria {
 		} else if (cantidadDeAusencias > empleado.getToleranciaDeAusencias()) {
 			liquidacion -= valorDiaDeTrabajo * cantidadDeAusencias;
 		}
+
 		return liquidacion;
 	}
 
-	public Double calcularSueldoPromedioTotal(Empresa empresa) {
+	public void calcularSumaDeSueldosTotales(Empresa empresa) {
 		Double sumaTotal = 0.0;
-		Double sueldosPromedio = 0.0;
 
 		for (Empleado empleado : empresa.getEmpleados()) {
 			sumaTotal += empleado.getSueldo();
 		}
-		sueldosPromedio = sumaTotal / empresa.getEmpleados().size();
-
-		return sueldosPromedio;
-
+		liquidacionTotalDeSueldosDeLaEmpresa = sumaTotal;
 	}
 
-	public Double calcularSumaDeSueldosTotales(Empresa empresa) {
-		Double sumaTotal = 0.0;
-
-		for (Empleado empleado : empresa.getEmpleados()) {
-			sumaTotal += empleado.getSueldo();
-		}
-		return sumaTotal;
+	public Double getLiquidacionTotalDeSueldosDeLaEmpresa() {
+		return liquidacionTotalDeSueldosDeLaEmpresa;
 	}
 
 }
