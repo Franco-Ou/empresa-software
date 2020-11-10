@@ -39,8 +39,9 @@ public class Empresa {
 	}
 
 	public HashMap<Empleado, Double> liquidarSueldos() {
+		Contaduria contaduria = new Contaduria("Contaduria");
 		for (Empleado empleado : empleados) {
-			sueldos.put(empleado, empleado.calcularSueldo());
+			sueldos.put(empleado, contaduria.calcularSueldo(empleado));
 		}
 		return sueldos;
 	}
