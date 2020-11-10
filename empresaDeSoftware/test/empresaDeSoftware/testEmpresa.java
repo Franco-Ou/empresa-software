@@ -115,5 +115,18 @@ public class testEmpresa {
 
 		assertTrue(microsoft.liquidarSueldos().equals(sueldosEsperados));
 	}
+	
+	@Test
+	public void queCalculeCorrectamenteLaIndemnizacion() {
+		Empresa oracle = new Empresa("Oracle");
+		
+		Empleado Jose = new Empleado(37090520, 8526, "José", 25000.00, 2011);
+		Empleado Silvana = new Empleado(37099104, 6456, "Silvana", 31000.00, 2008);
+		
+		oracle.contratarEmpleado(Jose);
+		oracle.contratarEmpleado(Silvana);
+		
+		assertEquals(225000.00, oracle.calcularIndemnizacion(8526), 0.0);
+	}
 
 }

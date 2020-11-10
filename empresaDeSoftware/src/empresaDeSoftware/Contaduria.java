@@ -1,6 +1,10 @@
 package empresaDeSoftware;
 
+import java.util.ArrayList;
+
 public class Contaduria {
+	
+	private ArrayList<String> listadoDeInformesContables = new ArrayList<String>();
 
 	public Contaduria(String nombre) {
 
@@ -42,5 +46,30 @@ public class Contaduria {
 		}
 		return sumaTotal;
 	}
-
+	
+	public void agregarInformeContable(String informe){
+		 if(this.listadoDeInformesContables.contains(informe))
+		 this.listadoDeInformesContables.add(informe);
+		}
+	
+	// Si la gerencia le solicita un informe específico:
+	public Boolean buscarUnInforme(String informeABuscar){
+		 for (String informeBuscado :this.listadoDeInformesContables){
+		  if(informeBuscado.equals(informeABuscar)){
+		   return true;
+		  }
+		 }
+		 return false;
+		}
+	
+	public Boolean eliminarUnInforme(String informeAEliminar) {
+		for(String informeEliminado : this.listadoDeInformesContables) {
+			if(informeEliminado.equals(informeAEliminar)) {
+				listadoDeInformesContables.remove(informeEliminado);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

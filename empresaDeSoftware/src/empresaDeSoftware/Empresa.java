@@ -1,11 +1,14 @@
 package empresaDeSoftware;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public class Empresa {
 	private String nombre;
+	private Integer antiguedad;
+	
 	private HashSet<Empleado> empleados = new HashSet<Empleado>();
 	HashMap<Empleado, Double> sueldos = new HashMap<Empleado, Double>();
 
@@ -26,6 +29,18 @@ public class Empresa {
 			}
 		}
 		return false;
+	}
+	
+	public Double calcularIndemnizacion(Integer idEmpleado) {
+		Double indemnizacion = null;
+		for (Empleado empleadoAIndemnizar : this.empleados) {
+			if(empleadoAIndemnizar.getIdEmpleado().equals(idEmpleado)) {
+				Integer anioActual = Calendar.getInstance().get(Calendar.YEAR);
+				antiguedad = anioActual - empleadoAIndemnizar.getAnioDeIngreso();
+				indemnizacion = (Double) (empleadoAIndemnizar.getSueldo() * antiguedad);
+			}
+		}
+		return indemnizacion;
 	}
 
 	public HashSet<Empleado> getEmpleados() {
