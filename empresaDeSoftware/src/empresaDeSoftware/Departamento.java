@@ -15,5 +15,9 @@ public class Departamento {
 		listaDeEmpleados.add(empleado);
 		return true;
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
 
 }
