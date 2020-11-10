@@ -64,6 +64,7 @@ public class testEmpresa {
 		Empleado empleado2 = new Empleado(13456789, 001, "Don Draper", 100000.0, 2000);
 		Empleado empleado3 = new Empleado(13456789, 001, "Diana Prince", 80000.0, 2000);
 		Empleado empleado4 = new Empleado(13456789, 001, "Peggy Olson", 73000.0, 2000);
+		Administracion administrador = new Administracion("Administrador");
 
 		/* 4 llegadas tarde suman una ausencia */
 
@@ -75,10 +76,10 @@ public class testEmpresa {
 		 * 50000-7500=42500
 		 */
 
-		empleado1.reportarAusencia();
-		empleado1.reportarAusencia();
+		administrador.reportarAusencia(empleado1);
+		administrador.reportarAusencia(empleado1);
 		for (int i = 0; i < 4; i++) {
-			empleado1.reportarLlegadaTarde();
+			administrador.reportarLlegadaTarde(empleado1);
 		}
 
 		/*
@@ -93,8 +94,7 @@ public class testEmpresa {
 		 * descontar 12000
 		 */
 		for (int i = 0; i < 7; i++) {
-			empleado3.reportarLlegadaTarde();
-			;
+			administrador.reportarLlegadaTarde(empleado3);
 		}
 
 		/* El empleado 4 no tiene ausencias. Deberá cobrar un adicional de 2000 */

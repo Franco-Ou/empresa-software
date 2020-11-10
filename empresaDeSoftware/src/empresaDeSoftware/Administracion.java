@@ -25,4 +25,12 @@ public class Administracion {
 			;
 		}
 	}
+	
+	public void reportarLlegadaTarde(Empleado empleado) {
+		empleado.setLlegadasTarde(empleado.getLlegadasTarde() + 1);
+	}
+	
+	public void reportarAusencia(Empleado empleado) {
+		empleado.setAusencias(empleado.getAusencias() + 1);
+	}
 }

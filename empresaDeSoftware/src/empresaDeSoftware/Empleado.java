@@ -44,6 +44,15 @@ public class Empleado {
 	public Integer getLlegadasTarde() {
 		return llegadasTarde;
 	}
+	
+
+	public void setAusencias(Integer ausencias) {
+		this.ausencias = ausencias;
+	}
+
+	public void setLlegadasTarde(Integer llegadasTarde) {
+		this.llegadasTarde = llegadasTarde;
+	}
 
 	public Integer getDni() {
 		return dni;
@@ -59,14 +68,6 @@ public class Empleado {
 
 	public Double getSueldo() {
 		return sueldo;
-	}
-
-	public void reportarLlegadaTarde() {
-		llegadasTarde++;
-	}
-
-	public void reportarAusencia() {
-		ausencias++;
 	}
 
 	public Integer getAusencias() {
