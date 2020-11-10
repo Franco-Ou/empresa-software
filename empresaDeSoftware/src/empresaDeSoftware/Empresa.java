@@ -7,7 +7,6 @@ import java.util.HashSet;
 public class Empresa {
 	private String nombre;
 	private HashSet<Empleado> empleados = new HashSet<Empleado>();
-	private HashSet<Departamento> departamentos = new HashSet<Departamento>();
 	HashMap<Empleado, Double> sueldos = new HashMap<Empleado, Double>();
 
 	public Empresa(String nombre) {
@@ -16,7 +15,7 @@ public class Empresa {
 
 	public void contratarEmpleado(Empleado empleado) {
 		empleados.add(empleado);
-		
+
 	}
 
 	public Boolean darDeBajaAEmpleado(Integer dni) {
@@ -31,11 +30,6 @@ public class Empresa {
 
 	public HashSet<Empleado> getEmpleados() {
 		return empleados;
-	}
-
-	public HashSet<Departamento> getDepartamentos() {
-	
-		return departamentos;
 	}
 
 	public HashMap<Empleado, Double> liquidarSueldos() {

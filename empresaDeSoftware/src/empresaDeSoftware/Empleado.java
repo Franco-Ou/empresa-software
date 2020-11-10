@@ -33,7 +33,6 @@ public class Empleado {
 		this.diasDeVacaciones = diasDeVacaciones;
 	}
 
-	
 	public Integer getAnioDeIngreso() {
 		return anioDeIngreso;
 	}
@@ -74,7 +73,6 @@ public class Empleado {
 		return ausencias;
 	}
 
-
 	public int getDiasDeVacaciones() {
 		return diasDeVacaciones;
 	}
@@ -83,7 +81,6 @@ public class Empleado {
 		return (dni.toString() + " " + idEmpleado.toString() + " " + nombre + " " + sueldo.toString() + " "
 				+ anioDeIngreso.toString());
 	}
-
 
 	@Override
 	public int hashCode() {

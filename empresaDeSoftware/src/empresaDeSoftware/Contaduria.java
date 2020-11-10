@@ -1,9 +1,8 @@
 package empresaDeSoftware;
 
-public class Contaduria extends Empresa {
+public class Contaduria {
 
 	public Contaduria(String nombre) {
-		super(nombre);
 
 	}
 
@@ -21,4 +20,27 @@ public class Contaduria extends Empresa {
 		}
 		return liquidacion;
 	}
+
+	public Double calcularSueldoPromedioTotal(Empresa empresa) {
+		Double sumaTotal = 0.0;
+		Double sueldosPromedio = 0.0;
+
+		for (Empleado empleado : empresa.getEmpleados()) {
+			sumaTotal += empleado.getSueldo();
+		}
+		sueldosPromedio = sumaTotal / empresa.getEmpleados().size();
+
+		return sueldosPromedio;
+
+	}
+
+	public Double calcularSumaDeSueldosTotales(Empresa empresa) {
+		Double sumaTotal = 0.0;
+
+		for (Empleado empleado : empresa.getEmpleados()) {
+			sumaTotal += empleado.getSueldo();
+		}
+		return sumaTotal;
+	}
+
 }
