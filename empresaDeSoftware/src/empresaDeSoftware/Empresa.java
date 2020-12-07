@@ -3,6 +3,7 @@ package empresaDeSoftware;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Empresa {
 	private String nombre;
@@ -74,4 +75,14 @@ public class Empresa {
 
 	}
 
+	public TreeSet<Desarrollador> obtenerDesarrolladoresConMasDeCincoProyectosFinalizadosOrdenadosPorDNI() {
+		TreeSet<Desarrollador> desarrolladoresConMasDeCincoProyectosFinalizados = new TreeSet<Desarrollador>();
+		for (Empleado empleado : empleados) {
+			if (empleado instanceof Desarrollador && ((Desarrollador) empleado).realizoMasDe5Proyectos()) {
+				desarrolladoresConMasDeCincoProyectosFinalizados.add((Desarrollador) empleado);
+			}
+		}
+
+		return desarrolladoresConMasDeCincoProyectosFinalizados;
+	}
 }

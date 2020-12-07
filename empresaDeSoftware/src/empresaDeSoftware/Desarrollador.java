@@ -31,24 +31,25 @@ public class Desarrollador extends Empleado {
 		}
 		return false;
 	}
-	
+
 	public boolean realizoMasDe5Proyectos() {
 		calcularProyectosFinalizados();
-		if(proyectosFinalizados>=5) {
-			return true;
-		}else {
-			return false;
+		if (proyectosFinalizados >= 5) {
+			tieneMasDe5ProyectosFinalizados = true;
+			return tieneMasDe5ProyectosFinalizados;
+		} else {
+			return tieneMasDe5ProyectosFinalizados;
 		}
 	}
-	
+
 	private void calcularProyectosFinalizados() {
-		Integer cantidadDeProyectosTerminados=0;
+		Integer cantidadDeProyectosTerminados = 0;
 		for (Proyecto proyecto : proyectosAsignados) {
-			if(proyecto.getEstado()=='T') {
+			if (proyecto.getEstado().equals('T')) {
 				cantidadDeProyectosTerminados++;
 			}
 		}
-		proyectosFinalizados=cantidadDeProyectosTerminados;
+		proyectosFinalizados = cantidadDeProyectosTerminados;
 	}
 
 	public void finalizarProyecto() {
