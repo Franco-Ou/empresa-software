@@ -6,7 +6,7 @@ public class Contaduria {
 	private Double liquidacionTotalDeSueldosDeLaEmpresa = 0.0;
 
 	public Contaduria() {
-
+		
 	}
 
 	public Double calcularSueldo(Empleado empleado) {

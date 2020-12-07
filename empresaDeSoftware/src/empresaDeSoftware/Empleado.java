@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 
-public class Empleado {
+public class Empleado implements Comparable {
 	private Integer dni;
 	private Integer idEmpleado;
 	private String nombre;
@@ -126,6 +126,12 @@ public class Empleado {
 		} else if (!idEmpleado.equals(other.idEmpleado))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
