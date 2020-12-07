@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class Desarrollador extends Empleado {
 
+	private boolean tieneMasDe5ProyectosFinalizados = false;
 	private Integer proyectosFinalizados = 0;
-	private ArrayList<String> proyectosAsignados = new ArrayList<String>();
+	private ArrayList<Proyecto> proyectosAsignados = new ArrayList<Proyecto>();
 	private Double bono = 2000.00;
 
 	public Desarrollador(Integer dni, Integer idEmpleado, String nombre, Double sueldo, Integer anioDeIngreso) {
@@ -14,21 +15,40 @@ public class Desarrollador extends Empleado {
 		plus = 3000;
 	}
 
-	public void asignarProyecto(String proyecto) {
+	public void asignarProyecto(Proyecto proyecto) {
 		proyectosAsignados.add(proyecto);
 	}
 
-	public ArrayList<String> getProyectosAsignados() {
+	public ArrayList<Proyecto> getProyectosAsignados() {
 		return proyectosAsignados;
 	}
 
-	public Boolean buscarProyecto(String proyectoBuscado) {
-		for (String proyectoEncontrado : this.proyectosAsignados) {
+	public Boolean buscarProyecto(Proyecto proyectoBuscado) {
+		for (Proyecto proyectoEncontrado : this.proyectosAsignados) {
 			if (proyectoEncontrado.equals(proyectoBuscado)) {
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public boolean realizoMasDe5Proyectos() {
+		calcularProyectosFinalizados();
+		if(proyectosFinalizados>=5) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	private void calcularProyectosFinalizados() {
+		Integer cantidadDeProyectosTerminados=0;
+		for (Proyecto proyecto : proyectosAsignados) {
+			if(proyecto.getEstado()=='T') {
+				cantidadDeProyectosTerminados++;
+			}
+		}
+		proyectosFinalizados=cantidadDeProyectosTerminados;
 	}
 
 	public void finalizarProyecto() {
@@ -38,6 +58,7 @@ public class Desarrollador extends Empleado {
 	// Los desarrolladores tienen un bono de $ 2000 por proyecto finalizado:
 	public Double calcularSueldo(Empleado empleado) {
 		Contaduria micontador = new Contaduria();
+		calcularProyectosFinalizados();
 		Double extraPorBono = (Double) (bono * proyectosFinalizados);
 		return micontador.calcularSueldo(empleado) + extraPorBono;
 	}

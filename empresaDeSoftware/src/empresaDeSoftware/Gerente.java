@@ -21,6 +21,20 @@ public class Gerente extends Empleado {
 		empleadosACargo.add(empleado);
 	}
 
+	
+	public void comenzarProyecto(Proyecto proyecto) {
+		proyecto.comenzarProyecto();
+	}
+	
+	public void cancelarProyecto(Proyecto proyecto) {
+		proyecto.cancelarProyecto();
+	}
+	
+	public void terminarProyecto(Proyecto proyecto) {
+		proyecto.terminarProyecto();
+	}
+	
+	
 	@Override
 	public int getDiasDeVacaciones() {
 		Integer adicional = 10;
