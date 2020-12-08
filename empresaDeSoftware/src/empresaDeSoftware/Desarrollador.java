@@ -1,12 +1,13 @@
 package empresaDeSoftware;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Desarrollador extends Empleado {
 
 	private boolean tieneCincoProyectosFinalizadosOMas = false;
 	private Integer proyectosFinalizados = 0;
-	private ArrayList<Proyecto> proyectosAsignados = new ArrayList<Proyecto>();
+	private HashSet <Proyecto> proyectosAsignados = new HashSet<Proyecto>();
 	private Double bono = 2000.00;
 
 	public Desarrollador(Integer dni, Integer idEmpleado, String nombre, Double sueldo, Integer anioDeIngreso) {
@@ -19,7 +20,7 @@ public class Desarrollador extends Empleado {
 		proyectosAsignados.add(proyecto);
 	}
 
-	public ArrayList<Proyecto> getProyectosAsignados() {
+	public HashSet<Proyecto> getProyectosAsignados() {
 		return proyectosAsignados;
 	}
 

@@ -93,5 +93,6 @@ public class Empresa {
 	public Contaduria getContaduria() {
 		return contaduria;
 	}
+	
 
 }
