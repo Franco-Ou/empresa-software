@@ -1,7 +1,5 @@
 package empresaDeSoftware;
 
-import java.util.HashSet;
-
 public class Contaduria {
 	private Double liquidacionTotalDeSueldosDeLaEmpresa = 0.0;
 

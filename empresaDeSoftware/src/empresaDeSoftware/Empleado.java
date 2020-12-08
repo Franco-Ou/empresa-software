@@ -133,6 +133,5 @@ public class Empleado implements Comparable<Empleado> {
 		return this.dni.compareTo(otroEmpleado.dni);
 	}
 
-	
 
 }

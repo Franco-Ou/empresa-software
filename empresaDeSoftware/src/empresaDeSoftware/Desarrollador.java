@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Desarrollador extends Empleado {
 
-	private boolean tieneMasDe5ProyectosFinalizados = false;
+	private boolean tieneCincoProyectosFinalizadosOMas = false;
 	private Integer proyectosFinalizados = 0;
 	private ArrayList<Proyecto> proyectosAsignados = new ArrayList<Proyecto>();
 	private Double bono = 2000.00;
@@ -32,13 +32,13 @@ public class Desarrollador extends Empleado {
 		return false;
 	}
 
-	public boolean realizoMasDe5Proyectos() {
+	public boolean realizoCincoProyectosOMas() {
 		calcularProyectosFinalizados();
 		if (proyectosFinalizados >= 5) {
-			tieneMasDe5ProyectosFinalizados = true;
-			return tieneMasDe5ProyectosFinalizados;
+			tieneCincoProyectosFinalizadosOMas = true;
+			return tieneCincoProyectosFinalizadosOMas;
 		} else {
-			return tieneMasDe5ProyectosFinalizados;
+			return tieneCincoProyectosFinalizadosOMas;
 		}
 	}
 
@@ -50,10 +50,6 @@ public class Desarrollador extends Empleado {
 			}
 		}
 		proyectosFinalizados = cantidadDeProyectosTerminados;
-	}
-
-	public void finalizarProyecto() {
-		proyectosFinalizados++;
 	}
 
 	// Los desarrolladores tienen un bono de $ 2000 por proyecto finalizado:

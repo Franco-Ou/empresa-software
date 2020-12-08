@@ -30,6 +30,21 @@ public class Empresa {
 		return false;
 	}
 
+	public Empleado buscarEmpleado(Integer dni) throws EmpleadoNotFoundException {
+		boolean fueEncontrado = false;
+		for (Empleado empleado : empleados) {
+			if (empleado.getDni().equals(dni)) {
+				fueEncontrado = true;
+				return empleado;
+			}
+		}
+
+		if (fueEncontrado == false) {
+			throw new EmpleadoNotFoundException("El empleado no fue encontrado");
+		}
+		return null;
+	}
+
 	public String mostrarEmpleadosQueLlegaronTarde() {
 		String lista = "";
 		for (Empleado empleado : administracion.getReporteDeEmpleadosQueLlegaronTarde()) {
@@ -78,11 +93,12 @@ public class Empresa {
 	public TreeSet<Desarrollador> obtenerDesarrolladoresConMasDeCincoProyectosFinalizadosOrdenadosPorDNI() {
 		TreeSet<Desarrollador> desarrolladoresConMasDeCincoProyectosFinalizados = new TreeSet<Desarrollador>();
 		for (Empleado empleado : empleados) {
-			if (empleado instanceof Desarrollador && ((Desarrollador) empleado).realizoMasDe5Proyectos()) {
+			if (empleado instanceof Desarrollador && ((Desarrollador) empleado).realizoCincoProyectosOMas()) {
 				desarrolladoresConMasDeCincoProyectosFinalizados.add((Desarrollador) empleado);
 			}
 		}
 
 		return desarrolladoresConMasDeCincoProyectosFinalizados;
 	}
+
 }
