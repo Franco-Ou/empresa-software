@@ -1,8 +1,6 @@
 package empresaDeSoftware;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
 
 public class Empleado implements Comparable<Empleado> {
 	private Integer dni;

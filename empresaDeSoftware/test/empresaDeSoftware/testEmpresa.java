@@ -96,8 +96,10 @@ public class testEmpresa {
 		Proyecto proyecto6 = new Proyecto("Proyecto 6", 5000.00, 10000.00);
 		Proyecto proyecto7 = new Proyecto("Proyecto 7", 10000.00, 35000.00);
 		Proyecto proyecto8 = new Proyecto("Proyecto 8", 50000.00, 120000.00);
+		Empresa samsung = new Empresa("Samsung");
 
 		Gerente gerente = new Gerente(22909887, 88, "Armando Paredes", 112000.00, 1995);
+		samsung.contratarEmpleado(gerente);
 
 		// Si bien no es necesario para el proposito de este test comenzarProyecto(), se
 		// incluye para mostrar como seria el flujo
@@ -121,7 +123,9 @@ public class testEmpresa {
 
 		Desarrollador desarrollador1 = new Desarrollador(30778909, 155, "Juan Perez", 60000.00, 2015);
 		Desarrollador desarrollador2 = new Desarrollador(36445009, 209, "Mariana Arias", 57000.00, 2019);
-
+		samsung.contratarEmpleado(desarrollador1);
+		samsung.contratarEmpleado(desarrollador2);
+		
 		desarrollador1.asignarProyecto(proyecto1);
 		desarrollador1.asignarProyecto(proyecto2);
 		desarrollador1.asignarProyecto(proyecto3);
@@ -140,8 +144,8 @@ public class testEmpresa {
 		// faltas + $8000 de los 4 proyectos finalizados)
 		// empleado 2 debiera cobrar $72000 (Sueldo base + $3000 de plus por no tener
 		// faltas + $12000 de los 6 proyectos finalizados)
-		assertEquals(71000.00, desarrollador1.calcularSueldo(desarrollador1), 0);
-		assertEquals(72000.00, desarrollador2.calcularSueldo(desarrollador2), 0);
+		assertEquals(71000.00, samsung.getContaduria().calcularSueldoFinalDeEmpleado(desarrollador1), 0);
+		assertEquals(72000.00, samsung.getContaduria().calcularSueldoFinalDeEmpleado(desarrollador2), 0);
 
 	}
 

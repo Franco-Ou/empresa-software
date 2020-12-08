@@ -68,7 +68,7 @@ public class Empresa {
 	public String mostrarSueldosDeEmpleados() {
 		String listaDeNombres = "";
 		for (Empleado empleado : empleados) {
-			listaDeNombres += empleado.getNombre() + " - " + contaduria.calcularSueldo(empleado) + "\n";
+			listaDeNombres += empleado.getNombre() + " - " + contaduria.calcularLiquidacion(empleado) + "\n";
 		}
 
 		return listaDeNombres;

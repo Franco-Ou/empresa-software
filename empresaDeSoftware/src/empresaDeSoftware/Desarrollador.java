@@ -42,7 +42,7 @@ public class Desarrollador extends Empleado {
 		}
 	}
 
-	private void calcularProyectosFinalizados() {
+	public Integer calcularProyectosFinalizados() {
 		Integer cantidadDeProyectosTerminados = 0;
 		for (Proyecto proyecto : proyectosAsignados) {
 			if (proyecto.getEstado().equals('T')) {
@@ -50,14 +50,11 @@ public class Desarrollador extends Empleado {
 			}
 		}
 		proyectosFinalizados = cantidadDeProyectosTerminados;
+		return proyectosFinalizados;
 	}
 
-	// Los desarrolladores tienen un bono de $ 2000 por proyecto finalizado:
-	public Double calcularSueldo(Empleado empleado) {
-		Contaduria micontador = new Contaduria();
-		calcularProyectosFinalizados();
-		Double extraPorBono = (Double) (bono * proyectosFinalizados);
-		return micontador.calcularSueldo(empleado) + extraPorBono;
+	public Double getBono() {
+		return bono;
 	}
 
 	@Override
