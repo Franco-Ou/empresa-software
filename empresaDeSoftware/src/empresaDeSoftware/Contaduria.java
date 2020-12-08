@@ -4,7 +4,7 @@ public class Contaduria {
 	private Double liquidacionTotalDeSueldosDeLaEmpresa = 0.0;
 
 	public Contaduria() {
-		
+
 	}
 
 	public Double calcularSueldo(Empleado empleado) {
@@ -23,17 +23,27 @@ public class Contaduria {
 		return liquidacion;
 	}
 
-	public void calcularSumaDeSueldosTotales(Empresa empresa) {
+	public Double getLiquidacionTotalDeSueldosDeLaEmpresa(Empresa empresa) {
 		Double sumaTotal = 0.0;
 
 		for (Empleado empleado : empresa.getEmpleados()) {
 			sumaTotal += empleado.getSueldo();
 		}
 		liquidacionTotalDeSueldosDeLaEmpresa = sumaTotal;
+		return liquidacionTotalDeSueldosDeLaEmpresa;
 	}
 
-	public Double getLiquidacionTotalDeSueldosDeLaEmpresa() {
-		return liquidacionTotalDeSueldosDeLaEmpresa;
+	public Double calcularSueldoPromedioTotal(Empresa empresa) {
+		Double sumaTotal = 0.0;
+		Double sueldosPromedio = 0.0;
+
+		for (Empleado empleado : empresa.getEmpleados()) {
+			sumaTotal += empleado.getSueldo();
+		}
+		sueldosPromedio = sumaTotal / empresa.getEmpleados().size();
+
+		return sueldosPromedio;
+
 	}
 
 }

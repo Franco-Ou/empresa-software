@@ -61,7 +61,6 @@ public class testEmpresa {
 		Empleado empleadoDePrueba3 = new Empleado(44567889, 003, "Amancio Jackson", 35000.0, 2019);
 		Empleado empleadoDePrueba4 = new Empleado(45990876, 004, "Juana Gomez", 35000.0, 2014);
 
-		Administracion administracion = new Administracion();
 		empleadoDePrueba1.calcularDiasDeVacaciones();
 		empleadoDePrueba2.calcularDiasDeVacaciones();
 		empleadoDePrueba3.calcularDiasDeVacaciones();
@@ -211,6 +210,22 @@ public class testEmpresa {
 		google.contratarEmpleado(empleado);
 		google.darDeBajaAEmpleado(empleado.getDni());
 		google.buscarEmpleado(empleado.getDni());
+
+	}
+
+	@Test
+	public void queCalculeElSueldoPromedioTotalDeLaEmpresaCorrectamente() {
+		Empresa apple = new Empresa("Apple");
+		Gerente gerente = new Gerente(32983409, 12353, "Martin Rodriguez", 75000.00, 2018);
+		Desarrollador desarrollador1 = new Desarrollador(35034839, 25543, "Carlos Caceres", 50000.00, 2020);
+		Desarrollador desarrollador2 = new Desarrollador(38033449, 35543, "Alejandro Córdoba", 44000.00, 2020);
+		Double promedio = (gerente.getSueldo() + desarrollador1.getSueldo() + desarrollador2.getSueldo()) / 3;
+
+		apple.contratarEmpleado(gerente);
+		apple.contratarEmpleado(desarrollador1);
+		apple.contratarEmpleado(desarrollador2);
+
+		assertEquals(apple.getContaduria().calcularSueldoPromedioTotal(apple), promedio);
 
 	}
 

@@ -1,7 +1,5 @@
 package empresaDeSoftware;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.TreeSet;
 
@@ -48,7 +46,7 @@ public class Empresa {
 	public String mostrarEmpleadosQueLlegaronTarde() {
 		String lista = "";
 		for (Empleado empleado : administracion.getReporteDeEmpleadosQueLlegaronTarde()) {
-			lista += empleado.getNombre() + "/n";
+			lista += empleado.getNombre() + "\n";
 		}
 
 		return lista;
@@ -57,7 +55,7 @@ public class Empresa {
 	public String mostrarEmpleadosQueSeAusentaron() {
 		String lista = "";
 		for (Empleado empleado : administracion.getReporteDeEmpleadosQueSeAusentaron()) {
-			lista += empleado.getNombre() + "/n";
+			lista += empleado.getNombre() + "\n";
 		}
 
 		return lista;
@@ -70,23 +68,10 @@ public class Empresa {
 	public String mostrarSueldosDeEmpleados() {
 		String listaDeNombres = "";
 		for (Empleado empleado : empleados) {
-			listaDeNombres += empleado.getNombre() + " - " + contaduria.calcularSueldo(empleado) + "/n";
+			listaDeNombres += empleado.getNombre() + " - " + contaduria.calcularSueldo(empleado) + "\n";
 		}
 
 		return listaDeNombres;
-
-	}
-
-	public Double calcularSueldoPromedioTotal() {
-		Double sumaTotal = 0.0;
-		Double sueldosPromedio = 0.0;
-
-		for (Empleado empleado : empleados) {
-			sumaTotal += empleado.getSueldo();
-		}
-		sueldosPromedio = sumaTotal / empleados.size();
-
-		return sueldosPromedio;
 
 	}
 
@@ -99,6 +84,14 @@ public class Empresa {
 		}
 
 		return desarrolladoresConMasDeCincoProyectosFinalizados;
+	}
+
+	public Administracion getAdministracion() {
+		return administracion;
+	}
+
+	public Contaduria getContaduria() {
+		return contaduria;
 	}
 
 }
