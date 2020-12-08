@@ -1,7 +1,10 @@
 package empresaDeSoftware;
 
+import java.util.HashSet;
+
 public class Contaduria {
 	private Double liquidacionTotalDeSueldosDeLaEmpresa;
+	private HashSet<Proyecto> listaDeProyectosFinalizadosDeLaEmpresa = new HashSet<Proyecto>();
 
 	public Contaduria() {
 		liquidacionTotalDeSueldosDeLaEmpresa = 0.0;
@@ -57,6 +60,28 @@ public class Contaduria {
 		sueldosPromedio = sumaTotal / empresa.getEmpleados().size();
 
 		return sueldosPromedio;
+
+	}
+
+	public void agregarProyecto(Proyecto proyecto) {
+		listaDeProyectosFinalizadosDeLaEmpresa.add(proyecto);
+	}
+
+	public Double costoTotalDeProyectosTerminadosDelaEmpresa() {
+		Double CostosTotales = 0.0;
+
+		for (Proyecto proyecto : listaDeProyectosFinalizadosDeLaEmpresa)
+			if (proyecto.getEstado().equals('T'))
+				CostosTotales += proyecto.getCosto();
+		return CostosTotales;
+	}
+
+	public Double gananciaTotalDeProyectosFinalizadosDelaEmpresa() {
+		Double gananciaTotal = 0.0;
+		for (Proyecto proyecto : listaDeProyectosFinalizadosDeLaEmpresa)
+			if (proyecto.getEstado().equals('T'))
+				gananciaTotal += proyecto.ganancia();
+		return gananciaTotal;
 
 	}
 

@@ -127,7 +127,7 @@ public class testEmpresa {
 		Desarrollador desarrollador2 = new Desarrollador(36445009, 209, "Mariana Arias", 57000.00, 2019);
 		samsung.contratarEmpleado(desarrollador1);
 		samsung.contratarEmpleado(desarrollador2);
-		
+
 		desarrollador1.asignarProyecto(proyecto1);
 		desarrollador1.asignarProyecto(proyecto2);
 		desarrollador1.asignarProyecto(proyecto3);
@@ -234,8 +234,7 @@ public class testEmpresa {
 		assertEquals(apple.getContaduria().calcularSueldoPromedioTotal(apple), promedio);
 
 	}
-	
-	
+
 	@Test
 	public void queSeMuestreCorrectamenteLosEmpleadosQueLLegaronTarde() {
 		Empleado empleado1 = new Empleado(10456789, 001, "Joan Holloway", 50000.0, 2000);
@@ -249,18 +248,19 @@ public class testEmpresa {
 		microsoft.contratarEmpleado(empleado2);
 		microsoft.contratarEmpleado(empleado3);
 		microsoft.contratarEmpleado(empleado4);
-		
+
 		microsoft.getAdministracion().reportarLlegadaTarde(empleado1);
 		microsoft.getAdministracion().reportarLlegadaTarde(empleado2);
-		
+
 		HashSet<Empleado> reporteLlegadasTardeEsperado = new HashSet<Empleado>();
 		reporteLlegadasTardeEsperado.add(empleado1);
 		reporteLlegadasTardeEsperado.add(empleado2);
-	
-		assertEquals(reporteLlegadasTardeEsperado, microsoft.getAdministracion().getReporteDeEmpleadosQueLlegaronTarde());
-		
-		}
-	
+
+		assertEquals(reporteLlegadasTardeEsperado,
+				microsoft.getAdministracion().getReporteDeEmpleadosQueLlegaronTarde());
+
+	}
+
 	@Test
 	public void queSeMuestreCorrectamenteLosEmpleadosQueSeAusentaron() {
 		Empleado empleado1 = new Empleado(10456789, 001, "Joan Holloway", 50000.0, 2000);
@@ -274,20 +274,86 @@ public class testEmpresa {
 		microsoft.contratarEmpleado(empleado2);
 		microsoft.contratarEmpleado(empleado3);
 		microsoft.contratarEmpleado(empleado4);
-		
+
 		microsoft.getAdministracion().reportarAusencia(empleado1);
 		microsoft.getAdministracion().reportarAusencia(empleado3);
-		
+
 		HashSet<Empleado> reporteDeAusenciasesperado = new HashSet<Empleado>();
 		reporteDeAusenciasesperado.add(empleado1);
 		reporteDeAusenciasesperado.add(empleado3);
-		
+
 		assertEquals(reporteDeAusenciasesperado, microsoft.getAdministracion().getReporteDeEmpleadosQueSeAusentaron());
-		
-		
-		
+
 	}
-	
-	
+
+	@Test
+	public void queCalculeElCostoTotalDeProyectosTerminadosDeLaEmpresa() {
+		Contaduria contaduria1 = new Contaduria();
+		Gerente gerente = new Gerente(22909887, 88, "Armando Paredes", 112000.00, 1995);
+
+		Proyecto desarrolloSistemaBanco = new Proyecto("BankSystem", 15000.00, 100000.00);
+		Proyecto webECommerce = new Proyecto("TiendaOnline", 8000.00, 50000.00);
+		Proyecto proyecto1 = new Proyecto("Proyecto 1", 15000.00, 100000.00);
+		Proyecto proyecto2 = new Proyecto("Proyecto 2", 8000.00, 50000.00);
+		Proyecto proyecto3 = new Proyecto("Proyecto 3", 9000.00, 20000.00);
+		Proyecto proyecto4 = new Proyecto("Proyecto 4", 22000.00, 40000.00);
+		Proyecto proyecto5 = new Proyecto("Proyecto 5", 2000.00, 5000.00);
+
+		contaduria1.agregarProyecto(desarrolloSistemaBanco);
+		contaduria1.agregarProyecto(webECommerce);
+		contaduria1.agregarProyecto(proyecto1);
+		contaduria1.agregarProyecto(proyecto2);
+		contaduria1.agregarProyecto(proyecto3);
+		contaduria1.agregarProyecto(proyecto4);
+		contaduria1.agregarProyecto(proyecto5);
+
+		gerente.comenzarProyecto(desarrolloSistemaBanco);
+		gerente.terminarProyecto(desarrolloSistemaBanco);
+		gerente.comenzarProyecto(webECommerce);
+		gerente.terminarProyecto(webECommerce);
+		gerente.comenzarProyecto(proyecto1);
+		gerente.terminarProyecto(proyecto1);
+		gerente.comenzarProyecto(proyecto2);
+		gerente.terminarProyecto(proyecto2);
+		gerente.comenzarProyecto(proyecto3);
+		gerente.terminarProyecto(proyecto3);
+		gerente.comenzarProyecto(proyecto4);
+		gerente.terminarProyecto(proyecto4);
+		gerente.comenzarProyecto(proyecto5);
+		gerente.terminarProyecto(proyecto5);
+
+		double costoEsperado = 79000.00;
+
+		assertEquals(costoEsperado, contaduria1.costoTotalDeProyectosTerminadosDelaEmpresa(), 0.01);
+	}
+
+	@Test
+	public void queCalculeGananciaTotalDeProyectosTerminadosDeLaEmpresa() {
+		Contaduria contaduria1 = new Contaduria();
+		Gerente gerente = new Gerente(22909887, 88, "Armando Paredes", 112000.00, 1995);
+
+		Proyecto desarrolloSistemaBanco = new Proyecto("BankSystem", 15000.00, 100000.00);
+		Proyecto webECommerce = new Proyecto("TiendaOnline", 8000.00, 50000.00);
+		Proyecto proyecto1 = new Proyecto("Proyecto 1", 15000.00, 100000.00);
+		Proyecto proyecto2 = new Proyecto("Proyecto 2", 8000.00, 50000.00);
+
+		contaduria1.agregarProyecto(desarrolloSistemaBanco);
+		contaduria1.agregarProyecto(webECommerce);
+		contaduria1.agregarProyecto(proyecto1);
+		contaduria1.agregarProyecto(proyecto2);
+
+		gerente.comenzarProyecto(desarrolloSistemaBanco);
+		gerente.terminarProyecto(desarrolloSistemaBanco);
+		gerente.comenzarProyecto(webECommerce);
+		gerente.terminarProyecto(webECommerce);
+		gerente.comenzarProyecto(proyecto1);
+		gerente.terminarProyecto(proyecto1);
+		gerente.comenzarProyecto(proyecto2);
+		gerente.terminarProyecto(proyecto2);
+
+		double costoEsperado = 254000.00;
+
+		assertEquals(costoEsperado, contaduria1.gananciaTotalDeProyectosFinalizadosDelaEmpresa(), 0.01);
+	}
 
 }
