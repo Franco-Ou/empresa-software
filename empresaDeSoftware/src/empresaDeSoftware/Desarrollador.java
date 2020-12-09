@@ -1,6 +1,5 @@
 package empresaDeSoftware;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Desarrollador extends Empleado {

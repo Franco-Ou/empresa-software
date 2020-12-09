@@ -288,7 +288,7 @@ public class testEmpresa {
 
 	@Test
 	public void queCalculeElCostoTotalDeProyectosTerminadosDeLaEmpresa() {
-		Contaduria contaduria1 = new Contaduria();
+		Empresa microsoft = new Empresa("Microsoft");
 		Gerente gerente = new Gerente(22909887, 88, "Armando Paredes", 112000.00, 1995);
 
 		Proyecto desarrolloSistemaBanco = new Proyecto("BankSystem", 15000.00, 100000.00);
@@ -299,13 +299,13 @@ public class testEmpresa {
 		Proyecto proyecto4 = new Proyecto("Proyecto 4", 22000.00, 40000.00);
 		Proyecto proyecto5 = new Proyecto("Proyecto 5", 2000.00, 5000.00);
 
-		contaduria1.agregarProyecto(desarrolloSistemaBanco);
-		contaduria1.agregarProyecto(webECommerce);
-		contaduria1.agregarProyecto(proyecto1);
-		contaduria1.agregarProyecto(proyecto2);
-		contaduria1.agregarProyecto(proyecto3);
-		contaduria1.agregarProyecto(proyecto4);
-		contaduria1.agregarProyecto(proyecto5);
+		microsoft.getContaduria().agregarProyecto(desarrolloSistemaBanco);
+		microsoft.getContaduria().agregarProyecto(webECommerce);
+		microsoft.getContaduria().agregarProyecto(proyecto1);
+		microsoft.getContaduria().agregarProyecto(proyecto2);
+		microsoft.getContaduria().agregarProyecto(proyecto3);
+		microsoft.getContaduria().agregarProyecto(proyecto4);
+		microsoft.getContaduria().agregarProyecto(proyecto5);
 
 		gerente.comenzarProyecto(desarrolloSistemaBanco);
 		gerente.terminarProyecto(desarrolloSistemaBanco);
@@ -324,23 +324,23 @@ public class testEmpresa {
 
 		double costoEsperado = 79000.00;
 
-		assertEquals(costoEsperado, contaduria1.costoTotalDeProyectosTerminadosDelaEmpresa(), 0.01);
+		assertEquals(costoEsperado, microsoft.getContaduria().costoTotalDeProyectosTerminadosDelaEmpresa(), 0.01);
 	}
 
 	@Test
 	public void queCalculeGananciaTotalDeProyectosTerminadosDeLaEmpresa() {
-		Contaduria contaduria1 = new Contaduria();
+		Empresa apple = new Empresa("Apple");
 		Gerente gerente = new Gerente(22909887, 88, "Armando Paredes", 112000.00, 1995);
-
+		apple.contratarEmpleado(gerente);
 		Proyecto desarrolloSistemaBanco = new Proyecto("BankSystem", 15000.00, 100000.00);
 		Proyecto webECommerce = new Proyecto("TiendaOnline", 8000.00, 50000.00);
 		Proyecto proyecto1 = new Proyecto("Proyecto 1", 15000.00, 100000.00);
 		Proyecto proyecto2 = new Proyecto("Proyecto 2", 8000.00, 50000.00);
 
-		contaduria1.agregarProyecto(desarrolloSistemaBanco);
-		contaduria1.agregarProyecto(webECommerce);
-		contaduria1.agregarProyecto(proyecto1);
-		contaduria1.agregarProyecto(proyecto2);
+		apple.getContaduria().agregarProyecto(desarrolloSistemaBanco);
+		apple.getContaduria().agregarProyecto(webECommerce);
+		apple.getContaduria().agregarProyecto(proyecto1);
+		apple.getContaduria().agregarProyecto(proyecto2);
 
 		gerente.comenzarProyecto(desarrolloSistemaBanco);
 		gerente.terminarProyecto(desarrolloSistemaBanco);
@@ -353,12 +353,12 @@ public class testEmpresa {
 
 		double costoEsperado = 254000.00;
 
-		assertEquals(costoEsperado, contaduria1.gananciaTotalDeProyectosFinalizadosDelaEmpresa(), 0.01);
+		assertEquals(costoEsperado, apple.getContaduria().gananciaTotalDeProyectosFinalizadosDelaEmpresa(), 0.01);
 	}
-	
+
 	@Test
 	public void queCalculeQueNoHayaGananciaSiNoHayProyectosTerminados() {
-		Contaduria contaduria1 = new Contaduria();
+		Empresa samsung = new Empresa("Samsung");
 		Gerente gerente = new Gerente(22909887, 88, "Armando Paredes", 112000.00, 1995);
 
 		Proyecto desarrolloSistemaBanco = new Proyecto("BankSystem", 15000.00, 100000.00);
@@ -366,23 +366,21 @@ public class testEmpresa {
 		Proyecto proyecto1 = new Proyecto("Proyecto 1", 15000.00, 100000.00);
 		Proyecto proyecto2 = new Proyecto("Proyecto 2", 8000.00, 50000.00);
 
-		contaduria1.agregarProyecto(desarrolloSistemaBanco);
-		contaduria1.agregarProyecto(webECommerce);
-		contaduria1.agregarProyecto(proyecto1);
-		contaduria1.agregarProyecto(proyecto2);
-		
+		samsung.getContaduria().agregarProyecto(desarrolloSistemaBanco);
+		samsung.getContaduria().agregarProyecto(webECommerce);
+		samsung.getContaduria().agregarProyecto(proyecto1);
+		samsung.getContaduria().agregarProyecto(proyecto2);
+
 		gerente.comenzarProyecto(desarrolloSistemaBanco);
-		
+
 		gerente.comenzarProyecto(webECommerce);
-		
+
 		gerente.comenzarProyecto(proyecto1);
 		gerente.comenzarProyecto(proyecto2);
-		
-		
+
 		double costoEsperado = 0.0;
 
-		assertEquals(costoEsperado, contaduria1.gananciaTotalDeProyectosFinalizadosDelaEmpresa(), 0.01);
+		assertEquals(costoEsperado, samsung.getContaduria().gananciaTotalDeProyectosFinalizadosDelaEmpresa(), 0.01);
 	}
-
 
 }
