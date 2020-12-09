@@ -57,7 +57,7 @@ public class testEmpresa {
 	}
 
 	@Test
-	public void calculoVacaciones() {
+	public void queCalculeVacacionesCorrectamente() {
 		Empleado empleadoDePrueba1 = new Empleado(13456789, 001, "Juan Perez", 50000.0, 2005);
 		Empleado empleadoDePrueba2 = new Empleado(10890567, 002, "Estela Maris", 75000.0, 1980);
 		Empleado empleadoDePrueba3 = new Empleado(44567889, 003, "Amancio Jackson", 35000.0, 2019);
@@ -75,7 +75,7 @@ public class testEmpresa {
 	}
 
 	@Test
-	public void calcularGananciaProyecto() {
+	public void queCalculeGananciasDelProyectoCorrectamente() {
 		Proyecto desarrolloSistemaBanco = new Proyecto("BankSystem", 15000.00, 100000.00);
 		Proyecto webECommerce = new Proyecto("TiendaOnline", 8000.00, 50000.00);
 
@@ -85,7 +85,7 @@ public class testEmpresa {
 	}
 
 	@Test
-	public void calcularSueldoDesarrollador() {
+	public void queCalculeSueldoDeDesarrolladorCorrectamente() {
 
 		// El desarrollador 1 tendr� 6 proyectos asignados, pero solo 4 terminados.
 		// El desarrollador 2 tendr� 6 proyectos asignados, y todos terminados
