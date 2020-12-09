@@ -1,10 +1,10 @@
 package empresaDeSoftware;
 
 public class Contaduria {
-	private Double liquidacionTotalDeSueldosDeLaEmpresa = 0.0;
+	private Double liquidacionTotalDeSueldosDeLaEmpresa;
 
 	public Contaduria() {
-
+		liquidacionTotalDeSueldosDeLaEmpresa = 0.0;
 	}
 
 	public Double calcularLiquidacion(Empleado empleado) {

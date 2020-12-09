@@ -33,10 +33,10 @@ public class Gerente extends Empleado {
 	}
 	
 	
-	@Override
+
 	public int getDiasDeVacaciones() {
 		Integer adicional = 10;
-		return getDiasDeVacaciones() + adicional;
+		return super.getDiasDeVacaciones() + adicional;
 	}
 
 }

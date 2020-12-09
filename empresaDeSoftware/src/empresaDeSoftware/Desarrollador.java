@@ -57,10 +57,10 @@ public class Desarrollador extends Empleado {
 		return bono;
 	}
 
-	@Override
+	
 	public int getDiasDeVacaciones() {
 		Integer adicional = 5;
-		return getDiasDeVacaciones() + adicional;
+		return super.getDiasDeVacaciones() + adicional;
 	}
 
 }
