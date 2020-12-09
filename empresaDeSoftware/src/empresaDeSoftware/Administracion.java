@@ -4,11 +4,12 @@ import java.util.HashSet;
 
 public class Administracion {
 
-	HashSet<Empleado> reporteDeEmpleadosQueLlegaronTarde = new HashSet<Empleado>();
-	HashSet<Empleado> reporteDeEmpleadosQueSeAusentaron = new HashSet<Empleado>();
+	HashSet<Empleado> reporteDeEmpleadosQueLlegaronTarde;
+	HashSet<Empleado> reporteDeEmpleadosQueSeAusentaron;
 
 	public Administracion() {
-
+		reporteDeEmpleadosQueLlegaronTarde = new HashSet<Empleado>();
+		reporteDeEmpleadosQueSeAusentaron = new HashSet<Empleado>();
 	}
 
 	public void reportarLlegadaTarde(Empleado empleado) {

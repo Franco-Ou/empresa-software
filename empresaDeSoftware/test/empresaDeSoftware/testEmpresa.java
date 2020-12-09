@@ -2,6 +2,8 @@ package empresaDeSoftware;
 
 import static org.junit.Assert.*;
 
+import java.util.HashSet;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -85,8 +87,8 @@ public class testEmpresa {
 	@Test
 	public void calcularSueldoDesarrollador() {
 
-		// El desarrollador 1 tendrá 6 proyectos asignados, pero solo 4 terminados.
-		// El desarrollador 2 tendrá 6 proyectos asignados, y todos terminados
+		// El desarrollador 1 tendrï¿½ 6 proyectos asignados, pero solo 4 terminados.
+		// El desarrollador 2 tendrï¿½ 6 proyectos asignados, y todos terminados
 
 		Proyecto proyecto1 = new Proyecto("Proyecto 1", 15000.00, 100000.00);
 		Proyecto proyecto2 = new Proyecto("Proyecto 2", 8000.00, 50000.00);
@@ -222,7 +224,7 @@ public class testEmpresa {
 		Empresa apple = new Empresa("Apple");
 		Gerente gerente = new Gerente(32983409, 12353, "Martin Rodriguez", 75000.00, 2018);
 		Desarrollador desarrollador1 = new Desarrollador(35034839, 25543, "Carlos Caceres", 50000.00, 2020);
-		Desarrollador desarrollador2 = new Desarrollador(38033449, 35543, "Alejandro Córdoba", 44000.00, 2020);
+		Desarrollador desarrollador2 = new Desarrollador(38033449, 35543, "Alejandro Cï¿½rdoba", 44000.00, 2020);
 		Double promedio = (gerente.getSueldo() + desarrollador1.getSueldo() + desarrollador2.getSueldo()) / 3;
 
 		apple.contratarEmpleado(gerente);
@@ -232,5 +234,60 @@ public class testEmpresa {
 		assertEquals(apple.getContaduria().calcularSueldoPromedioTotal(apple), promedio);
 
 	}
+	
+	
+	@Test
+	public void queSeMuestreCorrectamenteLosEmpleadosQueLLegaronTarde() {
+		Empleado empleado1 = new Empleado(10456789, 001, "Joan Holloway", 50000.0, 2000);
+		Empleado empleado2 = new Gerente(13456711, 002, "Don Draper", 100000.0, 2000);
+		Empleado empleado3 = new Desarrollador(12456730, 003, "Pete Campbell", 80000.0, 2000);
+		Empleado empleado4 = new Empleado(13456789, 004, "Peggy Olson", 73000.0, 2000);
+
+		Empresa microsoft = new Empresa("Sterling Cooper");
+
+		microsoft.contratarEmpleado(empleado1);
+		microsoft.contratarEmpleado(empleado2);
+		microsoft.contratarEmpleado(empleado3);
+		microsoft.contratarEmpleado(empleado4);
+		
+		microsoft.getAdministracion().reportarLlegadaTarde(empleado1);
+		microsoft.getAdministracion().reportarLlegadaTarde(empleado2);
+		
+		HashSet<Empleado> reporteLlegadasTardeEsperado = new HashSet<Empleado>();
+		reporteLlegadasTardeEsperado.add(empleado1);
+		reporteLlegadasTardeEsperado.add(empleado2);
+	
+		assertEquals(reporteLlegadasTardeEsperado, microsoft.getAdministracion().getReporteDeEmpleadosQueLlegaronTarde());
+		
+		}
+	
+	@Test
+	public void queSeMuestreCorrectamenteLosEmpleadosQueSeAusentaron() {
+		Empleado empleado1 = new Empleado(10456789, 001, "Joan Holloway", 50000.0, 2000);
+		Empleado empleado2 = new Gerente(13456711, 002, "Don Draper", 100000.0, 2000);
+		Empleado empleado3 = new Desarrollador(12456730, 003, "Pete Campbell", 80000.0, 2000);
+		Empleado empleado4 = new Empleado(13456789, 004, "Peggy Olson", 73000.0, 2000);
+
+		Empresa microsoft = new Empresa("Sterling Cooper");
+
+		microsoft.contratarEmpleado(empleado1);
+		microsoft.contratarEmpleado(empleado2);
+		microsoft.contratarEmpleado(empleado3);
+		microsoft.contratarEmpleado(empleado4);
+		
+		microsoft.getAdministracion().reportarAusencia(empleado1);
+		microsoft.getAdministracion().reportarAusencia(empleado3);
+		
+		HashSet<Empleado> reporteDeAusenciasesperado = new HashSet<Empleado>();
+		reporteDeAusenciasesperado.add(empleado1);
+		reporteDeAusenciasesperado.add(empleado3);
+		
+		assertEquals(reporteDeAusenciasesperado, microsoft.getAdministracion().getReporteDeEmpleadosQueSeAusentaron());
+		
+		
+		
+	}
+	
+	
 
 }
