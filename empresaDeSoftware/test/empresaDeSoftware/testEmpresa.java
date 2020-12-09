@@ -355,5 +355,34 @@ public class testEmpresa {
 
 		assertEquals(costoEsperado, contaduria1.gananciaTotalDeProyectosFinalizadosDelaEmpresa(), 0.01);
 	}
+	
+	@Test
+	public void queCalculeQueNoHayaGananciaSiNoHayProyectosTerminados() {
+		Contaduria contaduria1 = new Contaduria();
+		Gerente gerente = new Gerente(22909887, 88, "Armando Paredes", 112000.00, 1995);
+
+		Proyecto desarrolloSistemaBanco = new Proyecto("BankSystem", 15000.00, 100000.00);
+		Proyecto webECommerce = new Proyecto("TiendaOnline", 8000.00, 50000.00);
+		Proyecto proyecto1 = new Proyecto("Proyecto 1", 15000.00, 100000.00);
+		Proyecto proyecto2 = new Proyecto("Proyecto 2", 8000.00, 50000.00);
+
+		contaduria1.agregarProyecto(desarrolloSistemaBanco);
+		contaduria1.agregarProyecto(webECommerce);
+		contaduria1.agregarProyecto(proyecto1);
+		contaduria1.agregarProyecto(proyecto2);
+		
+		gerente.comenzarProyecto(desarrolloSistemaBanco);
+		
+		gerente.comenzarProyecto(webECommerce);
+		
+		gerente.comenzarProyecto(proyecto1);
+		gerente.comenzarProyecto(proyecto2);
+		
+		
+		double costoEsperado = 0.0;
+
+		assertEquals(costoEsperado, contaduria1.gananciaTotalDeProyectosFinalizadosDelaEmpresa(), 0.01);
+	}
+
 
 }
